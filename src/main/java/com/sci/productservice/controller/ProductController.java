@@ -2,6 +2,7 @@ package com.sci.productservice.controller;
 
 import java.util.List;
 
+import com.sci.productservice.dto.UpdateProductRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,8 +34,8 @@ public class ProductController {
 
 	@PutMapping
 	@ResponseStatus(HttpStatus.OK)
-	public void updateproduct(@RequestBody ProductRequest productRequest){
-		productService.updateProduct(productRequest);
+	public void updateproduct(@RequestBody UpdateProductRequest updateProductRequest){
+		productService.updateProduct(updateProductRequest);
 	}
 
 }

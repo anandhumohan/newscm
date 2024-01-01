@@ -4,6 +4,8 @@ package com.sci.productservice.service;
 
 import java.util.List;
 
+import com.sci.productservice.dto.UpdateProductRequest;
+import lombok.Builder;
 import org.springframework.stereotype.Service;
 
 import com.sci.productservice.dto.ProductRequest;
@@ -48,6 +50,16 @@ public class ProductService {
 				.build();
 	}
 
-    public void updateProduct(ProductRequest productRequest) {
+    public void updateProduct(UpdateProductRequest updateProductRequest) {
+		Product productDetails = productRepository.findById(updateProductRequest.getId())
+				.orElseThrow(()-> new RuntimeException("Run time exception"));
+
+		Product product = Product.builder()
+				.name(productDetails.getName())
+				.description(productDetails.getDescription())
+				.price(productDetails.getPrice())
+				.build();
+		productRepository.save(product);
+
     }
 }
