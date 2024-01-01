@@ -34,7 +34,7 @@ public class ProductController {
 	@PutMapping
 	@ResponseStatus(HttpStatus.OK)
 	public void updateproduct(){
-
+		productService.updateProduct();
 	}
 
 }
