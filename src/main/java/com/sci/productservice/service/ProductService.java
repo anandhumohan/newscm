@@ -47,4 +47,7 @@ public class ProductService {
 				.price(product.getPrice())
 				.build();
 	}
+
+    public void updateProduct(ProductRequest productRequest) {
+    }
 }

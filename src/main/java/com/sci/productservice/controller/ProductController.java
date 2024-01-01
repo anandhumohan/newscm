@@ -20,9 +20,9 @@ public class ProductController {
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public void createproduct(@RequestBody ProductRequest ProductRequest) {
+	public void createproduct(@RequestBody ProductRequest productRequest) {
 		
-		productService.createProduct(ProductRequest);
+		productService.createProduct(productRequest);
 	}
 	
 	@GetMapping
@@ -33,8 +33,8 @@ public class ProductController {
 
 	@PutMapping
 	@ResponseStatus(HttpStatus.OK)
-	public void updateproduct(){
-		productService.updateProduct();
+	public void updateproduct(@RequestBody ProductRequest productRequest){
+		productService.updateProduct(productRequest);
 	}
 
 }
