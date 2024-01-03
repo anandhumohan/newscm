@@ -37,4 +37,10 @@ public class ProductController {
 		productService.updateProduct(updateProductRequest);
 	}
 
+	@GetMapping("/products/{id}")
+	@ResponseStatus
+	public ProductResponse getProductById(@PathVariable String id){
+		return productService.getProductById(id);
+	}
+
 }

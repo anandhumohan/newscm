@@ -62,4 +62,15 @@ public class ProductService {
 		productRepository.save(product);
 
     }
+
+	public ProductResponse getProductById(String id) {
+		Product product = productRepository.findById(id)
+				.orElseThrow(()-> new RuntimeException("Run time exception"));
+		return ProductResponse.builder()
+				.id(product.getId())
+				.name(product.getName())
+				.description(product.getDescription())
+				.price(product.getPrice())
+				.build();
+	}
 }
