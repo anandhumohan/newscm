@@ -65,7 +65,7 @@ public class ProductService {
 
 	public ProductResponse getProductById(String id) {
 		Product product = productRepository.findById(id)
-				.orElseThrow(()-> new RuntimeException("Run time exception: Product not found"));
+				.orElseThrow(()-> new RuntimeException("Run time exception:Product not found"));
 		return ProductResponse.builder()
 				.id(product.getId())
 				.name(product.getName())
