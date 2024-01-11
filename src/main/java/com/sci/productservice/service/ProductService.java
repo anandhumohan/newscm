@@ -5,7 +5,6 @@ package com.sci.productservice.service;
 import java.util.List;
 
 import com.sci.productservice.dto.UpdateProductRequest;
-import lombok.Builder;
 import org.springframework.stereotype.Service;
 
 import com.sci.productservice.dto.ProductRequest;
@@ -35,7 +34,7 @@ public class ProductService {
 		log.info("Product is saved");
 	}
 
-	public List<ProductResponse> getAllProdcuts() {
+	public List<ProductResponse> getAllProducts() {
 		List<Product> products = productRepository.findAll();
 		return products.stream().map(this::mapToProductResponse).toList();
 		
