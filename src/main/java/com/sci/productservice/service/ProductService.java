@@ -31,7 +31,7 @@ public class ProductService {
                 .build();
 		
 		productRepository.save(product);
-		log.info("Product is saved");
+		log.info("Product is saved successfully");
 	}
 
 	public List<ProductResponse> getAllProducts() {
