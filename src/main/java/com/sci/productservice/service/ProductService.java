@@ -59,7 +59,7 @@ public class ProductService {
 				.price(productDetails.getPrice())
 				.build();
 		productRepository.save(product);
-		log.info("Product is updated");
+		log.info("Product is updated successfully");
 
     }
 
