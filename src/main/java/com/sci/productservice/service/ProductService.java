@@ -35,12 +35,14 @@ public class ProductService {
 	}
 
 	public List<ProductResponse> getAllProducts() {
+
 		List<Product> products = productRepository.findAll();
 		return products.stream().map(this::mapToProductResponse).toList();
 		
 	}
 
 	private ProductResponse mapToProductResponse(Product product) {
+
 		return ProductResponse.builder()
 				.id(product.getId())
 				.name(product.getName())
@@ -50,6 +52,7 @@ public class ProductService {
 	}
 
     public void updateProduct(UpdateProductRequest updateProductRequest) {
+
 		Product productDetails = productRepository.findById(updateProductRequest.getId())
 				.orElseThrow(()-> new RuntimeException("Run time exception: Product details not found"));
 
@@ -64,6 +67,7 @@ public class ProductService {
     }
 
 	public ProductResponse getProductById(String id) {
+
 		Product product = productRepository.findById(id)
 				.orElseThrow(()-> new RuntimeException("Run time exception:Product not found."));
 		return ProductResponse.builder()
