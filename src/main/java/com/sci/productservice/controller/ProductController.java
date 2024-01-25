@@ -18,7 +18,6 @@ import lombok.RequiredArgsConstructor;
 public class ProductController {
 	
 	private final ProductService productService;
-	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public void createProduct(@RequestBody ProductRequest productRequest) {
