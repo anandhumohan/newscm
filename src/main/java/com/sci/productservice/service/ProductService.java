@@ -1,7 +1,6 @@
 package com.sci.productservice.service;
 
 
-
 import java.util.List;
 
 import com.sci.productservice.dto.UpdateProductRequest;
@@ -19,62 +18,62 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 @Slf4j
 public class ProductService {
-	
-	private final ProductRepository productRepository;
 
-	public void createProduct(ProductRequest productRequest) {
-		
-		Product product = Product.builder()
+    private final ProductRepository productRepository;
+
+    public void createProduct(ProductRequest productRequest) {
+
+        Product product = Product.builder()
                 .name(productRequest.getName())
                 .description(productRequest.getDescription())
                 .price(productRequest.getPrice())
                 .build();
-		
-		productRepository.save(product);
-		log.info("Product is saved successfully.");
-	}
 
-	public List<ProductResponse> getAllProducts() {
+        productRepository.save(product);
+        log.info("Product is saved successfully.");
+    }
 
-		List<Product> products = productRepository.findAll();
-		return products.stream().map(this::mapToProductResponse).toList();
-		
-	}
+    public List<ProductResponse> getAllProducts() {
 
-	private ProductResponse mapToProductResponse(Product product) {
-
-		return ProductResponse.builder()
-				.id(product.getId())
-				.name(product.getName())
-				.description(product.getDescription())
-				.price(product.getPrice())
-				.build();
-	}
-
-    public void updateProduct(UpdateProductRequest updateProductRequest) {
-
-		Product productDetails = productRepository.findById(updateProductRequest.getId())
-				.orElseThrow(()-> new RuntimeException("Run time exception: Product details not found"));
-
-		Product product = Product.builder()
-				.name(productDetails.getName())
-				.description(productDetails.getDescription())
-				.price(productDetails.getPrice())
-				.build();
-		productRepository.save(product);
-		log.info("Product is updated successfully.");
+        List<Product> products = productRepository.findAll();
+        return products.stream().map(this::mapToProductResponse).toList();
 
     }
 
-	public ProductResponse getProductById(String id) {
+    private ProductResponse mapToProductResponse(Product product) {
 
-		Product product = productRepository.findById(id)
-				.orElseThrow(()-> new RuntimeException("Run time exception:Product not found."));
-		return ProductResponse.builder()
-				.id(product.getId())
-				.name(product.getName())
-				.description(product.getDescription())
-				.price(product.getPrice())
-				.build();
-	}
+        return ProductResponse.builder()
+                .id(product.getId())
+                .name(product.getName())
+                .description(product.getDescription())
+                .price(product.getPrice())
+                .build();
+    }
+
+    public void updateProduct(UpdateProductRequest updateProductRequest) {
+
+        Product productDetails = productRepository.findById(updateProductRequest.getId())
+                .orElseThrow(() -> new RuntimeException("Run time exception: Product details not found"));
+
+        Product product = Product.builder()
+                .name(productDetails.getName())
+                .description(productDetails.getDescription())
+                .price(productDetails.getPrice())
+                .build();
+        productRepository.save(product);
+        log.info("Product is updated successfully.");
+
+    }
+
+    public ProductResponse getProductById(String id) {
+
+        Product product = productRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Run time exception:Product not found."));
+        return ProductResponse.builder()
+                .id(product.getId())
+                .name(product.getName())
+                .description(product.getDescription())
+                .price(product.getPrice())
+                .build();
+    }
 }
