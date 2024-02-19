@@ -13,6 +13,7 @@ import com.sci.productservice.service.ProductService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api/product")
 @RequiredArgsConstructor
 public class ProductController {
