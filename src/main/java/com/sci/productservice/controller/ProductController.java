@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.sci.productservice.dto.UpdateProductRequest;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.sci.productservice.dto.ProductRequest;
@@ -37,10 +38,10 @@ public class ProductController {
 		productService.updateProduct(updateProductRequest);
 	}
 
-	@GetMapping("/products/{id}")
+	@GetMapping("/{id}")
 	@ResponseStatus
-	public ProductResponse getProductById(@PathVariable String id){
-		return productService.getProductById(id);
+	public ResponseEntity<ProductResponse> getProductById(@PathVariable String id){
+		return ResponseEntity.ok(productService.getProductById(id));
 	}
 
 }
