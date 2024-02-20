@@ -52,14 +52,18 @@ public class ProductService {
 
     public void updateProduct(UpdateProductRequest updateProductRequest) {
 
-        Product productDetails = productRepository.findById(updateProductRequest.getId())
+        Product product = productRepository.findById(updateProductRequest.getId())
                 .orElseThrow(() -> new RuntimeException("Run time exception: Product details not found"));
 
-        Product product = Product.builder()
-                .name(productDetails.getName())
-                .description(productDetails.getDescription())
-                .price(productDetails.getPrice())
-                .build();
+        if (updateProductRequest.getName() != null) {
+            product.setName(updateProductRequest.getName());
+        }
+        if (updateProductRequest.getDescription() != null) {
+            product.setDescription(updateProductRequest.getDescription());
+        }
+        if (updateProductRequest.getPrice() != null) {
+            product.setPrice(updateProductRequest.getPrice());
+        }
         productRepository.save(product);
         log.info("Product is updated successfully.");
 
