@@ -64,6 +64,7 @@ public class ProductService {
         if (updateProductRequest.getPrice() != null) {
             product.setPrice(updateProductRequest.getPrice());
         }
+
         productRepository.save(product);
         log.info("Product is updated successfully.");
 
