@@ -66,7 +66,7 @@ public class ProductService {
         }
 
         productRepository.save(product);
-        log.info("Product is updated successfully.");
+        log.info("Product is updated successfully");
 
     }
 
